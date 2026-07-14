@@ -1,6 +1,6 @@
 
 
-
+import sistemaNacional.*
 import brigada.*
 class Rescatistas {
     var nivelExperiencia = 1
@@ -57,7 +57,7 @@ class Humanos inherits Rescatistas {
     }
 
     override method esEspecialistaEnBusqueda(){
-        return super() and capacitaciones == 3
+        return super() and capacitaciones >= 3
     }
 
 
@@ -148,7 +148,7 @@ object busqueda {
     
     method veneficicionDeUnaMision(unaBrigada, unRescatista){
         unRescatista.subirExperiencia(unRescatista.nivelExperiencia() * 1.25)
-        unaBrigada.nuevaCapacidad(2)
+        unaBrigada.nuevaCapacidadMaxima(2)
 
     }
   
@@ -157,7 +157,7 @@ object busqueda {
 object asistencia {
     method veneficicionDeUnaMision(unaBrigada, unRescatista){
         unRescatista.subirExperiencia(unRescatista.nivelExperiencia() * 1.15)
-        unaBrigada.nuevaCapacidad(1)
+        unaBrigada.nuevaCapacidadMaxima(1)
 
     }
   
@@ -167,7 +167,7 @@ object asistencia {
 object reconocimineto {
     method veneficicionDeUnaMision(unaBrigada, unRescatista){
         unRescatista.subirExperiencia(unRescatista.nivelExperiencia() * 1.10)
-        unaBrigada.nuevaCapacidad(0)
+        unaBrigada.nuevaCapacidadMaxima(0)
 
     }
   

@@ -1,0 +1,68 @@
+import recatista.*
+import brigada.*
+import sistemaNacional.*
+describe "conjunto de tes de brigada"{
+        
+    const condor = new Brigadas(capacidaMaxima = 3)
+    const norte = new Brigadas(capacidaMaxima = 3)
+    const sur = new Brigadas(capacidaMaxima = 3)
+    const ana = new Humanos(capacitaciones = 2, mision = busqueda)
+    const bruno = new Humanos()
+    const rex = new Perros(nivelEntrenamiento=4)
+    const androideOne = new Androides()   
+    const dronOne = new Drones(alturaMaximaDeVuelo = 70)
+
+
+    method initialize(){
+     
+        condor.incoporarA(ana)
+        condor.incoporarA(bruno)
+        condor.incoporarA(rex)
+
+        norte.incoporarA(androideOne)
+        sur.incoporarA(dronOne)
+        onbr.registrAUnaNueva(norte)
+        onbr.registrAUnaNueva(sur)
+    }
+    
+    test "Primero test iniciales"{
+        assert.equals(37, condor.capacidaOpertiva())
+
+    }
+    test "La brigada posee 1 especialista en búsqueda"{
+        condor.entrarEnAcción()
+        assert.that(condor.esEspecialisadaEnBusqueda())
+    }
+
+    test "capacidad mínima del onbr a 70, la brigada deja de estar especializada en búsquedas."{
+        onbr.nuevaCapacidadOperativa(70)
+        assert.notThat(condor.esEspecialisadaEnBusqueda())
+    }
+
+     test "la brigada que entre en acción, y verificar que posee 2 especialistas en búsqueda"{
+        condor.entrarEnAcción()
+        assert.equals(2, condor.especialistasEnBusqueda().size())
+
+    }
+
+    test "verificar que la capacidad máxima de la brigada pasó a ser 7."{
+        condor.entrarEnAcción()
+        assert.equals(7, condor.capacidaMaxima())
+
+    }
+
+     test "ONBR que accione en una emergencia"{
+        onbr.accionarEmergencia()
+        assert.equals(80, androideOne.nivelDeEnergia())
+        assert.equals(90, dronOne.nivelDeEnergia())
+
+    }
+
+    test "ONBR la creación de una nueva brigada, ésta tiene prioridad 50, capacidad máxima 2 y queda integrada por un Humano y un Perro de rescate con los valores por defecto"{
+        onbr.crearUnaBrigada()
+        onbr.laUltimaBrigada()
+        assert.equals(3, onbr.registroDeBrigadas().size())
+        assert.equals(2, onbr.laUltimaBrigada().cantidadDeRecatista())
+
+    }
+}

@@ -1,4 +1,5 @@
 import recatista.*
+import sistemaNacional.*
 class Brigadas {
     const grupoDeRecastista = []
     var capacidaMaxima 
@@ -6,7 +7,7 @@ class Brigadas {
 
     method grupoDeRecastista()=grupoDeRecastista
     method capacidaMaxima()=capacidaMaxima
-    method preorida()=prioridad
+    method prioridad()=prioridad
 
    
 
@@ -15,9 +16,9 @@ class Brigadas {
    }
    
     method incoporarA(unRecatista){
-      if(self.cantidadDeRecatista()< capacidaMaxima)  
-        self.error("Se Alcanzó la cantidad másxima de rescatista")
-        grupoDeRecastista.add(unRecatista)
+      if(self.cantidadDeRecatista()> capacidaMaxima)  
+      self.error("Se Alcanzó la cantidad másxima de rescatista")
+      grupoDeRecastista.add(unRecatista)
     }
 
     method nuevaCapacidadMaxima(unaCantidad){
@@ -37,8 +38,8 @@ class Brigadas {
 
     }
 
-    method esEspecialicadaEnBusqueda(){
-        return grupoDeRecastista.any({r=>r.esEspecialistaEnBusqueda()}) and self.capacidaOpertiva()> onbr.capacidadOperativa()
+    method esEspecialisadaEnBusqueda(){
+        return grupoDeRecastista.any({r=>r.esEspecialistaEnBusqueda()}) and self.capacidaOpertiva() >= onbr.capacidadOperativa()
     }
 
     method entrarEnAcción(){
@@ -47,3 +48,4 @@ class Brigadas {
     }
 
 }
+
