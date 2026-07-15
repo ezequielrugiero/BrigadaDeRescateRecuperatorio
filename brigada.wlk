@@ -25,8 +25,8 @@ class Brigadas {
         capacidaMaxima = capacidaMaxima + unaCantidad
     }
     // tengo que ver si funciona lo de max y min
-    method convocarUnaBrigadaPrimero(unaBrigada, unaPrioridad){
-        return unaBrigada.prioridad() == unaPrioridad.max(99).min(0)
+    method intialize(){
+        prioridad = prioridad.max(0).min(99)
     }
 
     method capacidaOpertiva(){

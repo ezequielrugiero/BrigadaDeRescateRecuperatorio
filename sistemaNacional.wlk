@@ -42,7 +42,7 @@ object onbr {
     // para luego ver cual numero es el más alto
     // para despues devolverme el objeto que le pertenesta ese numero, que este caso es su prioridad.
     method laBrigadaConMayorPrioridad(){
-        return registroDeBrigadas.max({b=>b.prioridad()})
+        return registroDeBrigadas.min({b=>b.prioridad()})
     }
 
     // este methodo llama al metodo entrarEnAccion De cada brigada, el cual termina llamando al mentodo
